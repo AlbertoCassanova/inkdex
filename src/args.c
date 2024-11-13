@@ -4,6 +4,7 @@
 #include "includes/io.h"
 #include "includes/lexer.h"
 #include "includes/parser.h"
+#include "includes/ast.h"
 
 void read_arg(int argc, char const *argv[])
 {
@@ -15,6 +16,8 @@ void compile(char* src)
 {
     lexer_T* lexer = init_lexer(src);
     parser_T* parser = init_parser(lexer);
+    AST_T* root = parser_parse(parser);
+
 }
 
 void compile_file(const char* filename)
