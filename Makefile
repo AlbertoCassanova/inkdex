@@ -1,2 +1,2 @@
 gcc:
-	gcc src/*.cpp -o ink -lstdc++
+	gcc -g src/*.cpp -o ink -lstdc++ 

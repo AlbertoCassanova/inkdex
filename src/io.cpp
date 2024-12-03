@@ -4,9 +4,9 @@
 
 using namespace std;
 
-IO::IO(string input)
+string inputFile(string input)
 {
-    string myText;
+    string src;
     ifstream file(input);
     if (file.is_open())
     {
@@ -14,15 +14,9 @@ IO::IO(string input)
     }
     else
     {
-        std::cerr << "Error: El archivo de entrada no existe";
+        std::cerr << "Error: El archivo de entrada no existe\n";
         exit(0);
     }
     file.close();
-}
-
-
-std::string IO::getSrc()
-{
-    std::string _src = src;
-    return _src;
+    return src;
 }

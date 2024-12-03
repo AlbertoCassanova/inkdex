@@ -1,6 +1,7 @@
 #ifndef LEXER_INK
 #define LEXER_INK
 #include <iostream>
+#include "token..hh"
 
 typedef struct lexerStruct
 {
@@ -10,13 +11,11 @@ typedef struct lexerStruct
     unsigned int i;
 } lexer;
 
-class Lexer
-{
-    private:
-        lexer *lexer_src;
-    public:
-        Lexer(std::string src);
-        //~lexer();
-};
+lexer* initLexer(std::string src);
+void lexerAdvance(lexer* lexer);
+token lexerAdvanceCurrent(lexer* lexer, token::tokenType type);
+void lexerSkipWhitespace(lexer* lexer);
+token lexerParseId(lexer* lexer);
+token lexerNextToken(lexer* lexer);
 
 #endif

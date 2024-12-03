@@ -1,17 +1,11 @@
 #ifndef IO_INK
 #define IO_INK
 #include <iostream>
+#include "lexer.hh"
 
-class IO
-{
-    private:
-        std::string src;
-    public:
-        IO(std::string input);
-        std::string getSrc();
-        //~IO();
-};
+using namespace std;
 
+string inputFile(string input);
 void compile(std::string src);
 
 #endif

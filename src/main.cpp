@@ -1,9 +1,14 @@
 #include <iostream>
 #include "includes/io.hh"
+#include "includes/lexer.hh"
+#include "includes/parser.hh"
 
-void compile(std::string src)
+void compile(std::string filename)
 {
-    std::cout << src;
+    std::string src = inputFile(filename);
+    lexer* lexer = initLexer(src);
+    parser* parser = initParser(lexer);
+    startParse(parser);
 }
 
 int main(int argc, char const *argv[])
@@ -13,9 +18,9 @@ int main(int argc, char const *argv[])
         return 1;
     }
     else {
-        IO io((std::string) argv[1]);
-        std::string src = io.getSrc();
-        compile(src);
+        compile((std::string) argv[1]);
+        //std::string src = io.getSrc();
+       //compile(src);
     }
     return 0;
 }
