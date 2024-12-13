@@ -1,5 +1,7 @@
 #include "includes/parser.hh"
 #include "includes/lexer.hh"
+#include "includes/ast.hh"
+#include "includes/utils.hh"
 
 parser* initParser(lexer* lexer)
 {
@@ -15,8 +17,11 @@ parser* initParser(lexer* lexer)
 
 void startParse(parser* parser)
 {
+    AST ast(parser);
     for (int i=0;  i< parser->token_src.size(); ++i) {
-        std::cout << parser->token_src[i].type << " ";
-        std::cout << parser->token_src[i].value << "\n";
+
+        //std::cout << parser->token_src[i].type << " ";
+        //std::cout << parser->token_src[i].value << "\n";
     }
+    print_ast(ast.Get_AST());
 }
