@@ -1,5 +1,6 @@
 #include <string> 
 #include "includes/utils.hh"
+#include <bits/stdc++.h>
 
 void print_ast(ast_struct* ast_src)
 {
@@ -27,4 +28,15 @@ std::string get_ast_type(unsigned int t)
         case 0: return "Program";
         default: return "";
     }
+}
+
+std::vector<std::string> split(std::string value, char delimiter)
+{
+    std::vector<std::string> list;
+    std::stringstream ss(value);
+    std::string t;
+    while (getline(ss, t, delimiter)){
+        list.push_back(t);
+    }
+    return list;
 }

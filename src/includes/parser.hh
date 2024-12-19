@@ -11,6 +11,6 @@ typedef struct parserStruct
 } parser;
 
 parser* initParser(lexer* lexer);
-void startParse(parser* parser);
+void startParse(parser* parser, std::string filename);
 
 #endif

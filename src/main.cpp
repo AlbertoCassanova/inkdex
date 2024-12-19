@@ -8,7 +8,7 @@ void compile(std::string filename)
     std::string src = inputFile(filename);
     lexer* lexer = initLexer(src);
     parser* parser = initParser(lexer);
-    startParse(parser);
+    startParse(parser, filename);
 }
 
 int main(int argc, char const *argv[])
@@ -19,8 +19,6 @@ int main(int argc, char const *argv[])
     }
     else {
         compile((std::string) argv[1]);
-        //std::string src = io.getSrc();
-       //compile(src);
     }
     return 0;
 }

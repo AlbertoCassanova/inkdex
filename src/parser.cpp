@@ -2,6 +2,7 @@
 #include "includes/lexer.hh"
 #include "includes/ast.hh"
 #include "includes/utils.hh"
+#include "includes/codegen.hh"
 
 parser* initParser(lexer* lexer)
 {
@@ -15,13 +16,25 @@ parser* initParser(lexer* lexer)
     return parser_src;
 }
 
-void startParse(parser* parser)
+void startParse(parser* parser, std::string filename)
 {
     AST ast(parser);
+    int charCounter = 0;
+    std::string valueToken;
     for (int i=0;  i< parser->token_src.size(); ++i) {
-
+        valueToken = parser->token_src[i].value;
+        if (parser->token_src[i].type == token::statementToken)
+        {
+            charCounter = charCounter + valueToken.size() + 1;
+            i = i+1;
+            std::cout << parser->token_src[i].value << " ";
+            ast.FunctionToAST(parser->token_src[i].value, charCounter);
+        }
+        
         //std::cout << parser->token_src[i].type << " ";
-        //std::cout << parser->token_src[i].value << "\n";
+        
     }
+    std::cout << charCounter << "\n";
+    codeGen(filename);
     print_ast(ast.Get_AST());
 }
